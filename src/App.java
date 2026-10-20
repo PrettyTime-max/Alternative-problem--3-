@@ -20,10 +20,10 @@ public class App {
                 if (maze[i][j] == 's') {
                     startLine = i;
                     startColumn = j;
-                    break;
                 }
             }
         }
+
         installationWalls(0, 0);
 
         if (findPath(startLine, startColumn)) {
@@ -35,13 +35,13 @@ public class App {
         for (int i = 0; i < partInMaze.length; i++) {
             for (int j = 0; j < partInMaze[i].length; j++) {
                 char current = partInMaze[i][j];
-                if (current == '\u0000') {
+                if (current == '\u0000') { // чек на пустой символ
                     System.out.print('.');
                 } else {
                     System.out.print(current);
                 }
             }
-        System.out.println();
+            System.out.println();
         }
         
     }
@@ -61,14 +61,14 @@ public class App {
         if (maze[line][coulumn] == 's') {
             partInMaze[line][coulumn] = 's';
         } 
-        else 
+
         if (maze[line][coulumn] == '.') {
             partInMaze[line][coulumn] = '*';
         }
 
         if (partInMaze[line][coulumn] == '#') {
             return false;
-        }  
+        }
 
         if (findPath(line + 1, coulumn)) return true;
         if (findPath(line - 1, coulumn)) return true;
@@ -76,7 +76,7 @@ public class App {
         if (findPath(line, coulumn - 1)) return true;
 
         if (maze[line][coulumn] != 's') {
-            partInMaze[line][coulumn] = '.'; // пустой символ
+            partInMaze[line][coulumn] = '.'; 
         }
 
         return false;
@@ -94,6 +94,7 @@ public class App {
         if (maze[i][j] == '#'){
             partInMaze[i][j] = '#';
         }
+
         installationWalls (i + 1, j);
     }
 }
